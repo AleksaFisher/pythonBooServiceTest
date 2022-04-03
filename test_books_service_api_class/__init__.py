@@ -1,7 +1,7 @@
 import requests
 from .test_api_manipulation import *
 from .test_api_get import *
-
+from .test_api_delete import *
 
 class TestApiCheck:
 
