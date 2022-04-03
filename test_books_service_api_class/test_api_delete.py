@@ -5,7 +5,6 @@ class TestApiDelete:
     def __init__(self, url):
         self.url = url
 
-
     def DeleteBook(self, data):
         response = None
         try:
