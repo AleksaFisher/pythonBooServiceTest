@@ -9,7 +9,7 @@ def test_change_name_book(bookid):
         getid = response.json()['id']
         print("{}".format(getid))
     except:
-        print("{}\n{}".format(response.status_code, response.json()))
+        print("{}\n{}".formpytestat(response.status_code, response.json()))
     return(getid)
 
 if __name__ == '__main__':
