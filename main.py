@@ -1,9 +1,4 @@
-import test_books_service_api
-
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from test_books_service_api import TestApi
 
 
 def print_hi(name):
@@ -15,8 +10,11 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
 
-    added_bookid = test_books_service_api.addbook()
-    getinfo = test_books_service_api.getinformationaboutbook(10)
+    conObj = TestApi("http://127.0.0.1:5000/v1/books")
+    getinfo = conObj.checkconnection()
+
+    # added_bookid = test_books_service_api.addbook()
+    # getinfo = test_books_service_api.getinformationaboutbook(10)
 
     print("{}".format(getinfo))
 
