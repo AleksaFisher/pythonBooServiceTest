@@ -16,10 +16,10 @@ class TestApiManipulation:
 
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
-        return bookid, response
+        return response
 
     def RenameBook(self, data):
-        bookid = data['bookid']
+        bookid = data['id']
         new_book_data = data['changes']
         try:
             response = requests.put("{}/manipulation?id={}".format(self.url, bookid), json=new_book_data)
