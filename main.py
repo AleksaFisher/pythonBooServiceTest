@@ -16,7 +16,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
     added_bookid = test_books_service_api.addbook()
-    getinfo = test_books_service_api.getinformationaboutbook()
+    getinfo = test_books_service_api.getinformationaboutbook(10)
 
     print("{}".format(getinfo))
 
