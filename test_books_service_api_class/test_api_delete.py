@@ -1,12 +1,12 @@
 import requests
 
 
-class TestApiGet:
+class TestApiDelete:
     def __init__(self, url, data):
         self.url = url
         self.data = data
 
-    def BookDelete(self):
+    def DeleteBook(self):
         response = None
         try:
             response = requests.delete("{}/manipulation?id={}".format(self.url, self.data))

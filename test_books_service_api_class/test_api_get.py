@@ -2,30 +2,29 @@ import requests
 
 
 class TestApiGet:
-    def __init__(self, url, data):
+    def __init__(self, url):
         self.url = url
-        self.data = data
 
-    def GetLatestBookInfo(self):
+    def GetLatestBookInfo(self, data):
         response = None
         try:
-            response = requests.get("{}/latest?limit={}".format(self.url, self.data)).json()
+            response = requests.get("{}/latest?limit={}".format(self.url, data)).json()
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response
 
-    def GetBookInfoByType(self):
+    def GetBookInfoByType(self, data):
         response = None
         try:
-            response = requests.get("{}/ids?book_type={}".format(self.url, self.data)).json()
+            response = requests.get("{}/ids?book_type={}".format(self.url, data)).json()
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response
 
-    def GetBookInfoById(self):
+    def GetBookInfoById(self, data):
         response = None
         try:
-            response = requests.get("{}/info?id={}".format(self.url, self.data)).json()
+            response = requests.get("{}/info?id={}".format(self.url, data)).json()
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response
