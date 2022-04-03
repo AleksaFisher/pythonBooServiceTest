@@ -19,6 +19,7 @@ if __name__ == '__main__':
 
 
     bookObj = TestApiManipulation("http://127.0.0.1:5000/v1/books")
+    #test adding normal book
     date_add = datetime.date.today().strftime("%Y-%m-%d")
     add_data = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
                 "creation_date": date_add}
@@ -26,6 +27,20 @@ if __name__ == '__main__':
     add_book = bookObj.AddBook(add_data)
     print("Book has been added:\n{}".format(add_book.json()))
 
+    #test_addming empy book
+    add_data_epmty = {"type": "", "title": "#{}-Discoveries in the field of physics".format(time.time()),
+                "creation_date": date_add}
+    add_book_empty = bookObj.AddBook(add_data_epmty)
+    print("Book has been added:\n{}".format(add_book_empty.json()))
+
+    #test adding  wrong book
+    add_data_wrong = {"type": "", "title": "#{}-Discoveries in the field of physics".format(time.time()),
+                "creation_date": date_add}
+    add_book_wrong = bookObj.AddBook(add_data_wrong)
+    print("Book has been added:\n{}".format(add_book_wrong.json()))
+
+
+    # test renaming book
     bookid = add_book.json()['id']
 
     rename_data = {'id': bookid, 'changes': {'id': bookid, 'type': 'Drama'}}
