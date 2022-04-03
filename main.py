@@ -15,9 +15,10 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm')
 
-    bookid=test_books_service_api.addbook()
-    # delete_book(bookid)
-    #print("{}".format(bookid))
+    added_bookid = test_books_service_api.addbook()
+    getinfo = test_books_service_api.getinformationaboutbook()
+
+    print("{}".format(getinfo))
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
