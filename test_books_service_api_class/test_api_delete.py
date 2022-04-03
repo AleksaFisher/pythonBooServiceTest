@@ -2,14 +2,14 @@ import requests
 
 
 class TestApiDelete:
-    def __init__(self, url, data):
+    def __init__(self, url):
         self.url = url
-        self.data = data
 
-    def DeleteBook(self):
+
+    def DeleteBook(self, data):
         response = None
         try:
-            response = requests.delete("{}/manipulation?id={}".format(self.url, self.data))
+            response = requests.delete("{}/manipulation?id={}".format(self.url, data))
             print("{}\nRemoved {}".format(response.status_code, response.json()))
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
