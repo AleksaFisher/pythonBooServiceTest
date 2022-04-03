@@ -18,30 +18,13 @@ class TestApiManipulation:
             print("{}\n{}".format(response.status_code, response.json()))
         return bookid, response
 
+    def RenameBook(self):
+        bookid = self.data['bookid']
+        new_book_data = self.data['changes']
+        try:
+            response = requests.put("{}/manipulation?id={}".format(self.url, bookid), json=new_book_data)
 
-# def addbookemptyname():
-#     date_add = datetime.date.today().strftime("%Y-%m-%d")
-#     dt_add_book = {"type": "", "title": "", "creation_date": ""}
-#     getid = None
-#     try:
-#         response = requests.post("http://127.0.0.1:5000/v1/books/manipulation", json=dt_add_book)
-#         print("{}\n{}".format(response.status_code, response.json()))
-#         getid = response.json()['id']
-#         print("{}".format(getid))
-#     except:
-#         print("{}\n{}".format(response.status_code, response.json()))
-#     return (getid)
+        except Exception:
+            print("{}\n{}".format(response.status_code, response.json()))
+        return response
 
-
-# def addbookcharactersname():
-#     date_add = datetime.date.today().strftime("%Y-%m-%d")
-#     dt_add_book = {"type": "\.,", "title": "\.,", "creation_date": "\.,"}
-#     getid = None
-#     try:
-#         response = requests.post("http://127.0.0.1:5000/v1/books/manipulation", json=dt_add_book)
-#         print("{}\n{}".format(response.status_code, response.json()))
-#         getid = response.json()['id']
-#         print("{}".format(getid))
-#     except:
-#         print("{}\n{}".format(response.status_code, response.json()))
-#     return (getid)

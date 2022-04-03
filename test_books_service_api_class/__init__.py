@@ -1,5 +1,7 @@
 import requests
 from .test_api_manipulation import *
+from .test_api_get import *
+
 
 class TestApiCheck:
 
@@ -7,7 +9,6 @@ class TestApiCheck:
         self.url = url
 
     def CheckConnection(self):
-
         response = None
         try:
             response = requests.get("{}/latest?limit=1".format(self.url)).json()
