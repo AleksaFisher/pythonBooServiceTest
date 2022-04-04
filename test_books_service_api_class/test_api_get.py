@@ -8,7 +8,7 @@ class TestApiGet:
     def GetLatestBookInfo(self, data):
         response = None
         try:
-            response = requests.get("{}/latest?limit={}".format(self.url, data)).json()
+            response = requests.get("{}/latest?limit={}".format(self.url, data))
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response
@@ -16,7 +16,8 @@ class TestApiGet:
     def GetBookInfoByType(self, data):
         response = None
         try:
-            response = requests.get("{}/ids?book_type={}".format(self.url, data)).json()
+            response = requests.get("{}/ids?book_type={}".format(self.url, data))
+
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response
@@ -24,7 +25,7 @@ class TestApiGet:
     def GetBookInfoById(self, data):
         response = None
         try:
-            response = requests.get("{}/info?id={}".format(self.url, data)).json()
+            response = requests.get("{}/info?id={}".format(self.url, data))
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
         return response

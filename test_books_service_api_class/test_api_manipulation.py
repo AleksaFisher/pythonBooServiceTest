@@ -9,10 +9,9 @@ class TestApiManipulation:
         # date_add = datetime.date.today().strftime("%Y-%m-%d")
         # dt_add_book = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
         #            "creation_date": date_add}
-        bookid = None
+
         try:
             response = requests.post("{}/manipulation".format(self.url), json=data)
-            bookid = response.json()['id']
 
         except Exception:
             print("{}\n{}".format(response.status_code, response.json()))
