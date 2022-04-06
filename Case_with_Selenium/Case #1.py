@@ -24,4 +24,7 @@ class TestCase1():
     self.driver.find_element(By.LINK_TEXT, "About").click()
     self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .column-block > .gd-typography-h4").click()
     self.driver.execute_script("window.scrollTo(0,0)")
+   
+    text = "Grid"
+    list = self.driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
   
