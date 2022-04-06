@@ -5,7 +5,6 @@ import test_books_service_api
 
 
 def test_add_book():
-
     bookObject = TestApiManipulation("http://127.0.0.1:5000/v1/books")
     date_add = datetime.date.today().strftime("%Y-%m-%d")
     data = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
@@ -22,6 +21,7 @@ def test_addbookcharactersname():
 
     assert result.status_code == 200
 
+
 def test_addbookcharacterstype():
     bookObject = TestApiManipulation("http://127.0.0.1:5000/v1/books")
     date_add = datetime.date.today().strftime("%Y-%m-%d")
@@ -30,8 +30,8 @@ def test_addbookcharacterstype():
 
     assert result.status_code == 200
 
-def test_add_empty_book():
 
+def test_add_empty_book():
     bookObject = TestApiManipulation("http://127.0.0.1:5000/v1/books")
     date_add = datetime.date.today().strftime("%Y-%m-%d")
     data = {"type": "", "title": "", "creation_date": date_add}
@@ -41,17 +41,18 @@ def test_add_empty_book():
 
 
 def test_delete_book():
-    bookid="d87f4b4a-908d-48e7-bc0d-7da2850d3f1a"
+    bookid = "d87f4b4a-908d-48e7-bc0d-7da2850d3f1a"
     bookObject = TestApiDelete("http://127.0.0.1:5000/v1/books")
     result = bookObject.DeleteBook(bookid)
     assert result.status_code == 200
 
-def test_getinfobook():
 
+def test_getinfobook():
     bookObject = TestApiGet("http://127.0.0.1:5000/v1/books")
     dict_params = "Scidence"
     result = bookObject.GetBookInfoByType(dict_params)
     assert result.status_code == 200
+
 
 def test_getinfobookwithid():
     bookObject = TestApiGet("http://127.0.0.1:5000/v1/books")
@@ -59,11 +60,13 @@ def test_getinfobookwithid():
     result = bookObject.GetBookInfoById(dict_params)
     assert result.status_code == 200
 
+
 def test_getinfobooklatest():
     bookObject = TestApiGet("http://127.0.0.1:5000/v1/books")
     dict_params = 10000
     result = bookObject.GetLatestBookInfo(dict_params)
     assert result.status_code == 200
+
 
 def test_renamebook():
     bookid = "6bfc01c4-7100-4a06-b02b-7305a3f44949"
@@ -71,6 +74,8 @@ def test_renamebook():
     bookObject = TestApiManipulation("http://127.0.0.1:5000/v1/books")
     result = bookObject.RenameBook(rename_data)
     assert result.status_code == 200
+
+
 #
 #     params = "55297037-e455-4be5-b131-55d4b25df6e0"
 #     #response = requests.get("http://127.0.0.1:5000/v1/books/info?id={}".format(params))
@@ -84,10 +89,8 @@ def test_renamebook():
 #      #   print(response.status_code)
 
 if __name__ == '__main__':
-
     # test_add_book()
     # test_add_empty_book()
-
 
     ## How to use module example
     added_bookid = test_books_service_api.addbook()
@@ -130,4 +133,3 @@ if __name__ == '__main__':
     # rename_book = bookObj.RenameBook(rename_data)
     # print("Result:\n{}".format(rename_book.json()))
     #
-
