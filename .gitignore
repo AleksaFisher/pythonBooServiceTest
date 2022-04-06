@@ -1,2 +1,5 @@
-/test_books_service_api_class/
 .idea
+venv
+.pytest_cache
+./*/.pytest_cache
+
