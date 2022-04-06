@@ -6,6 +6,12 @@ class TestApiDelete:
         self.url = url
 
     def DeleteBook(self, data):
+        """
+        uses requests.delete method to call BooksService API to delete particular book
+        data: string - id of book to delete
+        return
+        response: object - object returned by requests.delete, including api json response & satus code
+        """
         response = None
         try:
             response = requests.delete("{}/manipulation?id={}".format(self.url, data))
