@@ -10,21 +10,22 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+
 class TestCase1():
-  def setup_method(self, method):
-    self.driver = webdriver.Chrome()
-    self.vars = {}
-  
-  def teardown_method(self, method):
-    self.driver.quit()
-  
-  def test_case1(self):
-    self.driver.get("https://blog.griddynamics.com/")
-    self.driver.set_window_size(1440, 790)
-    self.driver.find_element(By.LINK_TEXT, "About").click()
-    self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .column-block > .gd-typography-h4").click()
-    self.driver.execute_script("window.scrollTo(0,0)")
-   
-    text = "Grid"
-    list = self.driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
-  
+    def setup_method(self, method):
+        self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
+        self.vars = {}
+
+    def teardown_method(self, method):
+        self.driver.quit()
+
+    def test_case1(self):
+        self.driver.get("https://blog.griddynamics.com/")
+        self.driver.set_window_size(1440, 790)
+        self.driver.find_element(By.LINK_TEXT, "About").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .column-block > .gd-typography-h4").click()
+        self.driver.execute_script("window.scrollTo(0,0)")
+
+        # text = "Grid"
+        # list = self.driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
+        # assert list == ""

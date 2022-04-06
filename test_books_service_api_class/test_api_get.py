@@ -6,6 +6,7 @@ class TestApiGet:
         self.url = url
 
     def GetLatestBookInfo(self, data):
+
         response = None
         try:
             response = requests.get("{}/latest?limit={}".format(self.url, data))

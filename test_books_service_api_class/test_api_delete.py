@@ -14,7 +14,7 @@ class TestApiDelete:
         """
         response = None
         try:
-            response = requests.delete("{}/manipulation?id={}".format(self.url, data))
+            response = requests.delete(f"{self.url}/manipulation?id={data}")
             #print("{format(response.status_code}\nRemoved {response.json()}"))
             print("{}\nRemoved {}".format(response.status_code, response.json()))
         except Exception:
