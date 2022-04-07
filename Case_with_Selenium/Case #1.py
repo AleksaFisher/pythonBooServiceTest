@@ -22,10 +22,23 @@ class TestCase1():
     def test_case1(self):
         self.driver.get("https://blog.griddynamics.com/")
         self.driver.set_window_size(1440, 790)
+        element = self.driver.find_element(By.CSS_SELECTOR, ".section-block:nth-child(3) > .section-button")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
+        element = self.driver.find_element(By.CSS_SELECTOR, "body")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element, 0, 0).perform()
+        element = self.driver.find_element(By.LINK_TEXT, "About")
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "About").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .column-block > .gd-typography-h4").click()
-        self.driver.execute_script("window.scrollTo(0,0)")
-
+        self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
+        element = self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p")
+        locator = "option[@value='{}']".format(element.get_attribute("value"))
+        selected_text = element.find_element(By.XPATH, locator).text
+        assert selected_text == "Grid Dynamics is a publicly-traded end-to-end software engineering, information technology consulting company working with enterprise clients across numerous industries. And our esteemed clients are some of the most respected brands in the world, so there’s a great chance you’ve seen our work!"
+        self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
         # text = "Grid"
         # list = self.driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
         # assert list == ""

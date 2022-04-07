@@ -14,7 +14,8 @@ class TestApiManipulation:
             response = requests.post("{}/manipulation".format(self.url), json=data)
 
         except Exception:
-            print("{}\n{}".format(response.status_code, response.json()))
+            print(f"{response.status_code}\n{response.json()}")
+           # print("{}\n{}".format(response.status_code, response.json()))
         return response
 
     def RenameBook(self, data):
@@ -24,5 +25,6 @@ class TestApiManipulation:
             response = requests.put("{}/manipulation?id={}".format(self.url, bookid), json=new_book_data)
 
         except Exception:
-            print("{}\n{}".format(response.status_code, response.json()))
+            print(f"{response.status_code}\n{response.json()}")
+           # print("{}\n{}".format(response.status_code, response.json()))
         return response
