@@ -104,12 +104,12 @@ class ApiClass:
         return
         response: object - object returned by requests.post, including api json response & satus code
         """
-    book_id = data['id']
-    new_book_data = data['changes']
-    try:
-        response = requests.put("{}/manipulation?id={}".format(self.url, book_id), json=new_book_data)
+        book_id = data['id']
+        new_book_data = data['changes']
+        try:
+            response = requests.put("{}/manipulation?id={}".format(self.url, book_id), json=new_book_data)
 
-    except Exception:
-        print(f"{response.status_code}\n{response.json()}")
-        # print("{}\n{}".format(response.status_code, response.json()))
-    return response
+        except Exception:
+            print(f"{response.status_code}\n{response.json()}")
+            # print("{}\n{}".format(response.status_code, response.json()))
+        return response
