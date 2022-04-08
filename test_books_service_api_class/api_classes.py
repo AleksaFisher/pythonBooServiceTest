@@ -1,7 +1,7 @@
 import requests
 
 
-class test_book_service_api_classes:
+class ApiClass:
     def __init__(self, url):
         self.url = url
 
@@ -15,16 +15,16 @@ class test_book_service_api_classes:
         response = None
         try:
             response = requests.delete(f"{self.url}/manipulation?id={data}")
-            #print("{format(response.status_code}\nRemoved {response.json()}"))
+            # print("{format(response.status_code}\nRemoved {response.json()}"))
             print("{}\nRemoved {}".format(response.status_code, response.json()))
         except Exception:
             print(f"{response.status_code}\n{response.json()}")
-          #  print("{}\n{}".format(response.status_code, response.json()))
+        #  print("{}\n{}".format(response.status_code, response.json()))
         return response
 
-#class test_api_get:
-    #def __init__(self, url):
-     #   self.url = url
+    # class test_api_get:
+    # def __init__(self, url):
+    #   self.url = url
 
     def get_latest_book_info(self, data):
         """
@@ -39,7 +39,7 @@ class test_book_service_api_classes:
             response = requests.get("{}/latest?limit={}".format(self.url, data))
         except Exception:
             print(f"{response.status_code}\n{response.json()}")
-          #  print("{}\n{}".format(response.status_code, response.json()))
+        #  print("{}\n{}".format(response.status_code, response.json()))
         return response
 
     def get_book_info_by_type(self, data):
@@ -55,7 +55,7 @@ class test_book_service_api_classes:
 
         except Exception:
             print(f"{response.status_code}\n{response.json()}")
-            #print("{}\n{}".format(response.status_code, response.json()))
+            # print("{}\n{}".format(response.status_code, response.json()))
         return response
 
     def get_book_info_by_id(self, data):
@@ -71,45 +71,45 @@ class test_book_service_api_classes:
             response = requests.get("{}/info?id={}".format(self.url, data))
         except Exception:
             print(f"{response.status_code}\n{response.json()}")
-            #print("{}\n{}".format(response.status_code, response.json()))
+            # print("{}\n{}".format(response.status_code, response.json()))
         return response
 
-#class test_api_manipulation:
-      #  def __init__(self, url):
-       #     self.url = url
+    # class test_api_manipulation:
+    #  def __init__(self, url):
+    #     self.url = url
 
-
-        def add_book(self, data):
-            # date_add = datetime.date.today().strftime("%Y-%m-%d")
-            # dt_add_book = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
-            #            "creation_date": date_add}
+    def add_book(self, data):
+        # date_add = datetime.date.today().strftime("%Y-%m-%d")
+        # dt_add_book = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
+        #            "creation_date": date_add}
         """
         uses requests.post method to call BooksService API to post manipulation about add book
         data: string - id add of book
         return
         response: object - object returned by requests.post, including api json response & satus code
         """
-            try:
-                response = requests.post("{}/manipulation".format(self.url), json=data)
+        try:
+            response = requests.post("{}/manipulation".format(self.url), json=data)
 
-            except Exception:
-                print(f"{response.status_code}\n{response.json()}")
-                #print("{}\n{}".format(response.status_code, response.json()))
-            return response
+        except Exception:
+            print(f"{response.status_code}\n{response.json()}")
+            # print("{}\n{}".format(response.status_code, response.json()))
+        return response
 
-        def rename_book(self, data):
+    def rename_book(self, data):
+
         """
         uses requests.post method to call BooksService API to post manipulation rename book
         data: string - id rename of book
         return
         response: object - object returned by requests.post, including api json response & satus code
         """
-            book_id = data['id']
-            new_book_data = data['changes']
-            try:
-                response = requests.put("{}/manipulation?id={}".format(self.url, book_id), json=new_book_data)
+    book_id = data['id']
+    new_book_data = data['changes']
+    try:
+        response = requests.put("{}/manipulation?id={}".format(self.url, book_id), json=new_book_data)
 
-            except Exception:
-                print(f"{response.status_code}\n{response.json()}")
-                #print("{}\n{}".format(response.status_code, response.json()))
-            return response
+    except Exception:
+        print(f"{response.status_code}\n{response.json()}")
+        # print("{}\n{}".format(response.status_code, response.json()))
+    return response
