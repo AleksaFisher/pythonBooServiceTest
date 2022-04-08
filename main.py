@@ -78,17 +78,6 @@ def test_rename_book():
     assert result.status_code == 200
 
 
-#
-#     params = "55297037-e455-4be5-b131-55d4b25df6e0"
-#     #response = requests.get("http://127.0.0.1:5000/v1/books/info?id={}".format(params))
-#    # print("{}\n{}".format(response.status_code, response.json()))
-#    # if response.status_code == 200:
-#     #    print("Resp {}".format(response.url))
-#      #   print("{}".format(response.json()['type']))
-#         #print("Я кодер")
-#     #else:
-#         #print("Я Г-кодер")
-#      #   print(response.status_code)
 
 if __name__ == '__main__':
     test_add_book()
@@ -102,36 +91,7 @@ if __name__ == '__main__':
     # conObj = TestApiGet("http://127.0.0.1:5000/v1/books")
     # getinfo = conObj.GetLatestBookInfo(1)
     # print("{}".format(getinfo))
-    #
-    #
-    #
-    #
-    # bookObj = TestApiManipulation("http://127.0.0.1:5000/v1/books")
-    # #test adding normal book
-    # date_add = datetime.date.today().strftime("%Y-%m-%d")
-    # add_data = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
-    #             "creation_date": date_add}
-    #
-    # add_book = bookObj.AddBook(add_data)
-    # print("Book has been added:\n{}".format(add_book.json()))
-    #
-    # #test_addming empy book
-    # add_data_epmty = {"type": "", "title": "#{}-Discoveries in the field of physics".format(time.time()),
-    #             "creation_date": date_add}
-    # add_book_empty = bookObj.AddBook(add_data_epmty)
-    # print("Book has been added:\n{}".format(add_book_empty.json()))
-    #
-    # #test adding  wrong book
-    # add_data_wrong = {"type": "", "title": "#{}-Discoveries in the field of physics".format(time.time()),
-    #             "creation_date": date_add}
-    # add_book_wrong = bookObj.AddBook(add_data_wrong)
-    # print("Book has been added:\n{}".format(add_book_wrong.json()))
-    #
-    #
-    # # test renaming book
-    # bookid = add_book.json()['id']
-    #
-    # rename_data = {'id': bookid, 'changes': {'id': bookid, 'type': 'Drama'}}
-    # rename_book = bookObj.RenameBook(rename_data)
-    # print("Result:\n{}".format(rename_book.json()))
-    #
+
+from Case_with_Selenium import TestCase1
+def test_selenium_case1():
+    TestCase1()
