@@ -23,8 +23,8 @@ class test_book_service_api_classes:
         return response
 
 #class test_api_get:
-    def __init__(self, url):
-        self.url = url
+    #def __init__(self, url):
+     #   self.url = url
 
     def get_latest_book_info(self, data):
         """
@@ -75,8 +75,8 @@ class test_book_service_api_classes:
         return response
 
 #class test_api_manipulation:
-        def __init__(self, url):
-            self.url = url
+      #  def __init__(self, url):
+       #     self.url = url
 
 
         def add_book(self, data):
