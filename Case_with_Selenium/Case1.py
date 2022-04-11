@@ -32,15 +32,14 @@ class TestCase1():
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "About").click()
-        # self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
-        element = self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p")
-        elval = element..get_attribute("value")
-        print (f"{elval}")
-        locator = "option[@value='{}']".format(element.get_attribute("value"))
-        selected_text = element.find_element(By.XPATH, locator).text
-        assert selected_text == "Grid Dynamics is a publicly-traded end-to-end software engineering, information technology consulting company working with enterprise clients across numerous industries. And our esteemed clients are some of the most respected brands in the world, so there’s a great chance you’ve seen our work!"
-        self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
-        self.driver.find_element(By.CSS_SELECTOR, ".footer-description > p").click()
-        # text = "Grid"
-        # list = self.driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
-        # assert list == ""
+
+        selected_text = self.driver.find_element(By.XPATH,
+                                                 '//*[contains(text(),"Grid Dynamics is a publicly-traded")]').text
+        print(f"selected_text:{selected_text}\n")
+        assert selected_text == "Grid Dynamics is a publicly-traded end-to-end software engineering," \
+                                " information technology consulting company working with enterprise" \
+                                " clients across numerous industries. And our esteemed clients are some" \
+                                " of the most respected brands in the world, so there’s a great chance" \
+                                " you’ve seen our work!"
+
+
