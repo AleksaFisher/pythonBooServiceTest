@@ -113,3 +113,13 @@ class ApiClass:
             print(f"{response.status_code}\n{response.json()}")
             # print("{}\n{}".format(response.status_code, response.json()))
         return response
+
+    def check_connection(self):
+        response = None
+        try:
+            response = requests.get("{}/latest?limit=1".format(self.url)).json()
+
+        except Exception as error:
+            print(f"ERROR:\n{error}")
+
+        return response
