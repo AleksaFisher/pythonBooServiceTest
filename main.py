@@ -2,16 +2,20 @@ import datetime
 import time
 import pytest
 from test_books_service_api_class import ApiClass
-from Case_with_Selenium import TestCase1
+# from Case_with_Selenium import TestCase1
 
 
-class TestClass:
+
+
+class TestApiClass:
     def __init__(self, url):
         self.url = url
 
-    def setup_method(self):
-        self.check = ApiClass(self.url).check_connection()
-        assert self.check is not None
+    @pytest.fixture(autouse=True)
+    def setup_method(self, method):
+        check = ApiClass(self.url).check_connection()
+        assert check is not None
+        assert check.status_code == 200
 
     def t_add_book(self):
         book_object = ApiClass(self.url)
@@ -69,7 +73,7 @@ class TestClass:
         result = book_object.get_lat_book_info(dict_params)
         assert result.status_code == 200
 
-    def t_rename_book(self):
+    def t_rename_book(self,setup):
         book_id = "6bfc01c4-7100-4a06-b02b-7305a3f44949"
         rename_data = {'id': book_id, 'changes': {'id': book_id, 'type': 'Drama'}}
         book_object = ApiClass(self.url)
@@ -77,8 +81,10 @@ class TestClass:
         assert result.status_code == 200
 
 
+
+
 def test_books_service():
-    b = TestClass("http://127.0.0.1:5000/v1/books")
+    b = TestApiClass("http://127.0.0.1:5000/v1/books")
     b.t_get_info_book_with_id()
 
 
