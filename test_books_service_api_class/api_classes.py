@@ -117,7 +117,7 @@ class ApiClass:
     def check_connection(self):
         response = None
         try:
-            response = requests.get("{}/latest?limit=1".format(self.url)).json()
+            response = requests.get("{}/latest?limit=1".format(self.url))
 
         except Exception as error:
             print(f"ERROR:\n{error}")
