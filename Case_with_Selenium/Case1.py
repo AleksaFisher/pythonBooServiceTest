@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
+from Case_with_Selenium.Home_Page import HomePage
 
 class TestCase1():
     def setup_method(self, method):
@@ -20,26 +20,28 @@ class TestCase1():
         self.driver.quit()
 
     def test_case1(self):
-        self.driver.get("https://blog.griddynamics.com/")
+        self.driver.get("https://blopythong.griddynamics.com/")
         self.driver.set_window_size(1440, 790)
-        element = self.driver.find_element(By.CSS_SELECTOR, ".section-block:nth-child(3) > .section-button")
+        element = self.driver.find_element(By.CSS_SELECTOR, HomePage.element_name)
+        #element = self.driver.find_element(By.CSS_SELECTOR, ".section-block:nth-child(3) > .section-button")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
+        element = self.driver.find_element(By.CSS_SELECTOR, HomePage.element_body)
+        #element = self.driver.find_element(By.CSS_SELECTOR, "body")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.LINK_TEXT, "About")
+        element = self.driver.find_element(By.LINK_TEXT, HomePage.element_about)
+        #element = self.driver.find_element(By.LINK_TEXT, "About")
         actions = ActionChains(self.driver)
         actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "About").click()
+        self.driver.find_element(By.LINK_TEXT, HomePage.element_about).click()
+        #self.driver.find_element(By.LINK_TEXT, "About").click()
+       # selected_text = self.driver.find_element(By.XPATH,
+        #                                         '//*[contains(text(),"Grid Dynamics is a publicly-traded")]').text
 
         selected_text = self.driver.find_element(By.XPATH,
-                                                 '//*[contains(text(),"Grid Dynamics is a publicly-traded")]').text
+                                                 HomePage.text_selected).text
         print(f"selected_text:{selected_text}\n")
-        assert selected_text == "Grid Dynamics is a publicly-traded end-to-end software engineering," \
-                                " information technology consulting company working with enterprise" \
-                                " clients across numerous industries. And our esteemed clients are some" \
-                                " of the most respected brands in the world, so there’s a great chance" \
-                                " you’ve seen our work!"
+        assert selected_text == HomePage.text_find
 
 
