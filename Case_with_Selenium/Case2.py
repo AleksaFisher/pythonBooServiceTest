@@ -13,7 +13,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class TestCase2():
   def setup_method(self, method):
     self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-    self.vars = {}
+   # self.vars = {}
   
   def teardown_method(self, method):
     self.driver.quit()
@@ -64,4 +64,6 @@ class TestCase2():
     self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .description-label").click()
     self.driver.execute_script("window.scrollTo(0,0)")
     self.driver.execute_script("window.scrollTo(0,268.5)")
-  
+
+   # print(f"selected_text:{selected_text}\n")
+   # assert selected_text == HomePage.text_find

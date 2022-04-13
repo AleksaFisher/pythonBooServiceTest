@@ -1,3 +1,5 @@
+from selenium.webdriver.common.action_chains import ActionChains
+
 class HomePage():
     element_name = ".section-block:nth-child(3) > .section-button"
     element_body = "body"
@@ -10,3 +12,4 @@ class HomePage():
                                 " you’ve seen our work!"
    # def open_page(self):
     #    self.open()
+    actions = ActionChains(self.driver)

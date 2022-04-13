@@ -14,13 +14,13 @@ from Case_with_Selenium.Home_Page import HomePage
 class TestCase1():
     def setup_method(self, method):
         self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-        self.vars = {}
+   #     self.vars = {}
 
     def teardown_method(self, method):
         self.driver.quit()
 
     def test_case1(self):
-        self.driver.get("https://blopythong.griddynamics.com/")
+        self.driver.get("https://blog.griddynamics.com")
         self.driver.set_window_size(1440, 790)
         element = self.driver.find_element(By.CSS_SELECTOR, HomePage.element_name)
         #element = self.driver.find_element(By.CSS_SELECTOR, ".section-block:nth-child(3) > .section-button")

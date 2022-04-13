@@ -10,15 +10,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestCase4():
+class TestCase3():
   def setup_method(self, method):
     self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-    self.vars = {}
+  #  self.vars = {}
   
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_case4(self):
+  def test_case3(self):
     self.driver.get("https://blog.griddynamics.com/")
     self.driver.set_window_size(1440, 790)
     self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .ui-button-block").click()
@@ -44,4 +44,5 @@ class TestCase4():
     actions = ActionChains(self.driver)
     actions.move_to_element(element).release().perform()
     self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block").click()
-  
+    print(f"selected_text:{selected_text}\n")
+    assert selected_text == HomePage.text_find
