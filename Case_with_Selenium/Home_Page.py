@@ -12,4 +12,3 @@ class HomePage():
                                 " you’ve seen our work!"
    # def open_page(self):
     #    self.open()
-    actions = ActionChains(self.driver)

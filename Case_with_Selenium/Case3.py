@@ -38,11 +38,10 @@ class TestCase3():
     actions = ActionChains(self.driver)
     actions.move_to_element(element).click_and_hold().perform()
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
-    actions = ActionChains(self.driver)
+    #actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
-    actions = ActionChains(self.driver)
+    #actions = ActionChains(self.driver)
     actions.move_to_element(element).release().perform()
     self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block").click()
-    print(f"selected_text:{selected_text}\n")
-    assert selected_text == HomePage.text_find
+
