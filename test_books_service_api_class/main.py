@@ -13,13 +13,12 @@ class TestApiClass:
 
     @pytest.fixture(autouse=True)
     def setup_method(self, method):
-        try:
+        #try:
             check = ApiClass(self.url).check_connection()
-        #assert check is not None
-        #assert check.status_code == 200
-            check.status_code == 200
-        except:
-            check.status_code == 400
+            assert check is not None
+            assert check.status_code == 200
+
+
 
     def t_add_book(self):
         book_object = ApiClass(self.url)
