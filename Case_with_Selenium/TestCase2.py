@@ -34,7 +34,7 @@ class TestCase2:
         assert element.is_displayed()
         element.click()
         #
-        self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .description-label").click()
+        self.driver.find_element(By.XPATH, "//a[@class='card-block ng-star-inserted']").click()
         self.driver.execute_script("window.scrollTo(0,0)")
         self.driver.execute_script("window.scrollTo(0,218.5)")
         self.driver.execute_script("window.scrollTo(0,216)")

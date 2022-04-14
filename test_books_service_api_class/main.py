@@ -15,7 +15,8 @@ class TestApiClass:
     def setup_method(self, method):
         try:
             check = ApiClass(self.url).check_connection()
-            assert check.status_code == 200
+            if not check.status_code == 200:
+                raise Exception
         except Exception as error:
             print(f"{error}")
         # assert check is not None
