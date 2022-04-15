@@ -14,7 +14,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class TestCase2:
     def setup_method(self, method):
         self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-        self.vars = {}
+       # self.vars = {}
 
     def teardown_method(self, method):
         self.driver.quit()
