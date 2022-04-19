@@ -22,8 +22,12 @@ class TestCase2:
     def test_case2(self):
         self.driver.get("https://blog.griddynamics.com/")
         self.driver.set_window_size(1440, 790)
-        element = self.driver.find_element(By.LINK_TEXT, "Solutions")
         actions = ActionChains(self.driver)
+        element = self.driver.find_element(By.XPATH, "//A[@_ngcontent-gd-website-c26=''][text()=' Solutions ']")
+        assert element.click()
+        assert 1 == 2
+
+        element = self.driver.find_element(By.LINK_TEXT, "Solutions")
         actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, "Solutions").click()
 
@@ -34,7 +38,14 @@ class TestCase2:
         assert element.is_displayed()
         element.click()
         #
-        self.driver.find_element(By.XPATH, "//a[@class='card-block ng-star-inserted']").click()
+
+        #
+        # self.driver.find_element(By.XPATH, "//a[@class='card-block ng-star-inserted']").click()
+
+#
+        element = self.driver.find_element(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
+        element.is_displayed()
+
         self.driver.execute_script("window.scrollTo(0,0)")
         self.driver.execute_script("window.scrollTo(0,218.5)")
         self.driver.execute_script("window.scrollTo(0,216)")
