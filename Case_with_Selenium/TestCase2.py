@@ -14,48 +14,55 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class TestCase2:
     def setup_method(self, method):
         self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-       # self.vars = {}
+
+    # self.vars = {}
 
     def teardown_method(self, method):
-        self.driver.quit()
+        # self.driver.quit()
+        pass
 
     def test_case2(self):
         self.driver.get("https://blog.griddynamics.com/")
         self.driver.set_window_size(1440, 790)
-        actions = ActionChains(self.driver)
-        element = self.driver.find_element(By.XPATH, "//A[@_ngcontent-gd-website-c26=''][text()=' Solutions ']")
-        assert element.click()
-        assert 1 == 2
+
 
         element = self.driver.find_element(By.LINK_TEXT, "Solutions")
-        actions.move_to_element(element).perform()
-        self.driver.find_element(By.LINK_TEXT, "Solutions").click()
+        assert element.is_displayed()
+        element.click()
 
+        # element = self.driver.find_element(By.XPATH,
+        #                                    "(//*[contains(_ngcontent-gd-website-c68,'')][contains(text(),'Filter by')])")
         element = self.driver.find_element(By.CLASS_NAME, "solutions-filter__facets")
         assert element.is_displayed()
+        # cloud devops in filter
+
+
 
         element = self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-5 > .ng-star-inserted:nth-child(1) span")
         assert element.is_displayed()
         element.click()
-        #
 
-        #
-        # self.driver.find_element(By.XPATH, "//a[@class='card-block ng-star-inserted']").click()
-
+        element = self.driver.find_element(By.XPATH, "//A[contains(@href,'/solutions/')]")
+        assert element.
+#         #
 #
-        element = self.driver.find_element(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
-        element.is_displayed()
-
-        self.driver.execute_script("window.scrollTo(0,0)")
-        self.driver.execute_script("window.scrollTo(0,218.5)")
-        self.driver.execute_script("window.scrollTo(0,216)")
-        # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-18 > .ng-star-inserted:nth-child(1) > label").click()
-        # self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .description-label").click()
-        self.driver.execute_script("window.scrollTo(0,0)")
-        self.driver.execute_script("window.scrollTo(0,242)")
-        self.driver.execute_script("window.scrollTo(0,0)")
-        self.driver.execute_script("window.scrollTo(0,251.5)")
-        # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) > label").click()
-        # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) > label").click()
-        # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) span").click()
-        # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) span").click()
+#         #
+#         # self.driver.find_element(By.XPATH, "//a[@class='card-block ng-star-inserted']").click()
+#
+# #
+#         element = self.driver.find_element(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
+#         element.is_displayed()
+#
+#         self.driver.execute_script("window.scrollTo(0,0)")
+#         self.driver.execute_script("window.scrollTo(0,218.5)")
+#         self.driver.execute_script("window.scrollTo(0,216)")
+#         # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-18 > .ng-star-inserted:nth-child(1) > label").click()
+#         # self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .description-label").click()
+#         self.driver.execute_script("window.scrollTo(0,0)")
+#         self.driver.execute_script("window.scrollTo(0,242)")
+#         self.driver.execute_script("window.scrollTo(0,0)")
+#         self.driver.execute_script("window.scrollTo(0,251.5)")
+#         # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) > label").click()
+#         # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) > label").click()
+#         # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) span").click()
+#         # self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-27 > .ng-star-inserted:nth-child(1) span").click()
