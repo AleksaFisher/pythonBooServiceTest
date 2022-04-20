@@ -46,7 +46,13 @@ class TestCase2:
 
         element5 = self.driver.find_elements(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
 
-        # class ="card-block ng-star-inserted" href="/solutions/analytical-data-platform" > < div _ngcontent-gd-website-c71=""
+        # < a
+        # _ngcontent - gd - website - c71 = ""
+        # cdkmonitorelementfocus = ""
+        #
+        # class ="card-block ng-star-inserted" href="/solutions/analytical-data-platform" > < div _ngcontent-gd-website-c71="" class ="gd-typography-h4 title-label" > Analytics platform < / div > < div _ngcontent-gd-website-c71="" class ="divider ng-star-inserted" > < / div > < !----> < div _ngcontent-gd-website-c71="" class ="description-label ng-star-inserted" > Increase speed to insights.Manage enterprise data assets, migrate from on-premise EDW to cloud, improve data accessibility & amp; quality, & amp; increase ROI.< / div > < !----> < gd-icon _ngcontent-gd-website-c71="" name="arrow-right" class ="read-more-icon ui-icon-standard-layout" aria-hidden="true" role="img" data-ui-icon-key="/assets/icons/arrow-right.svg" > < svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" > < path d="M12.7 4.4a1 1 0 10-1.4 1.4zm6.3 7.7l.7.7c.4-.4.4-1 0-1.4zm-7.7 6.3a1 1 0 001.4 1.4zm0-12.6l7 7 1.4-1.4-7-7zm7 5.6l-7 7 1.4 1.4 7-7z" > < / path > < path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M19 12.1H5" > < / path > < / svg >
+        #
+        # < / gd - icon > < / a >
 
         LOGGER.critical(f"List:{len(element5)}")
         assert len(element5) > 0
