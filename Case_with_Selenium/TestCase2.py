@@ -10,6 +10,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+import logging
+LOGGER = logging.getLogger(__name__)
 
 class TestCase2:
     def setup_method(self, method):
@@ -42,8 +44,12 @@ class TestCase2:
         assert element.is_displayed()
         element.click()
 
-        element = self.driver.find_element(By.XPATH, "//A[contains(@href,'/solutions/')]")
-        assert element.
+        element5 = self.driver.find_elements(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
+
+        # class ="card-block ng-star-inserted" href="/solutions/analytical-data-platform" > < div _ngcontent-gd-website-c71=""
+
+        LOGGER.critical(f"List:{len(element5)}")
+        assert len(element5) > 0
 #         #
 #
 #         #
