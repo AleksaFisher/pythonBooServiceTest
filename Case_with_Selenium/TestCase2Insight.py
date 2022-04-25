@@ -24,11 +24,16 @@ class TestTestCase2Insight():
         assert element.is_displayed()
         element.click()
 
-        element = self.driver.find_element(By.LINK_TEXT, "Articles")
-        assert element.is_displayed()
-        element.click()
+        # element = self.driver.find_element(By.LINK_TEXT, "Articles")
+        # assert element.is_displayed()
+        # element.click()
 
-        element = self.driver.find_element(By.CSS_SELECTOR, "topiclist .selected")
+        self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected").click()
+        self.driver.find_element(By.CSS_SELECTOR, "div > span:nth-child(6)").click()
+        self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected").click()
+        self.driver.find_element(By.CSS_SELECTOR, "#topiclist > div").click()
+
+        element =  self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected")
         assert element.is_displayed()
         # cloud devops in filter
         element.click()
@@ -42,6 +47,6 @@ class TestTestCase2Insight():
        # assert element.is_displayed()
         #element.click()
 
-        element5 = self.driver.find_elements(By.XPATH, "row first")
+        element5 = self.driver.find_elements(By.XPATH, "//div[@class='row regular insertsearch']")
         LOGGER.critical(f"List:{len(element5)}")
         assert len(element5) > 0

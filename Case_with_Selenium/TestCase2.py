@@ -30,10 +30,10 @@ class TestCase2:
 
 
         # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']")
-        element = self.driver.find_element(By.XPATH, "//span[@class='selected'][normalize-space()='All topics']")
+        element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
 
         assert element.is_displayed()
-        element.click()
+
         element.send_keys('Cloud and DevOps')
         # cloud devops in filter
 
