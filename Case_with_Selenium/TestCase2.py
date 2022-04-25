@@ -24,13 +24,17 @@ class TestCase2:
         self.driver.set_window_size(1440, 790)
 
 
-        element = self.driver.find_element(By.LINK_TEXT, "Solutions")
+        element = self.driver.find_element(By.LINK_TEXT, "Insights")
         assert element.is_displayed()
         element.click()
 
 
-        element = self.driver.find_element(By.CLASS_NAME, "solutions-filter__facets")
+        # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']")
+        element = self.driver.find_element(By.XPATH, "//span[@class='selected'][normalize-space()='All topics']")
+
         assert element.is_displayed()
+        element.click()
+        element.send_keys('Cloud and DevOps')
         # cloud devops in filter
 
 
