@@ -16,22 +16,24 @@ class TestCase3():
   #  self.vars = {}
   
   def teardown_method(self, method):
-    self.driver.quit()
+    # self.driver.quit()
+    pass
   
   def test_case3(self):
     self.driver.get("https://blog.griddynamics.com/")
     self.driver.set_window_size(1440, 790)
-    self.driver.find_element(By.CSS_SELECTOR, ".cdk-focused > .ui-button-block").click()
-    self.driver.find_element(By.ID, "form-field-input-71").click()
+    element = self.driver.find_element(By.XPATH, "//a[contains(@class,'contact-button')]")
     assert element.is_displayed()
-    self.driver.find_element(By.ID, "form-field-input-71").send_keys("Anna")
-    self.driver.find_element(By.ID, "form-field-input-73").click()
+    element.click()
+
+    self.driver.find_element(By.NAME, "firstName").send_keys("Anna")
+    self.driver.find_element(By.NAME, "lastName").click()
     assert element.is_displayed()
-    self.driver.find_element(By.ID, "form-field-input-73").send_keys("Smith")
-    self.driver.find_element(By.ID, "form-field-input-75").click()
+    self.driver.find_element(By.NAME, "lastName").send_keys("Smith")
+    self.driver.find_element(By.NAME, "email").click()
     assert element.is_displayed()
     self.driver.execute_script("window.scrollTo(0,240)")
-    self.driver.find_element(By.ID, "form-field-input-75").send_keys("annasmith@griddynamics.com")
+    self.driver.find_element(By.NAME, "email").send_keys("annasmith@griddynamics.com")
     self.driver.find_element(By.CSS_SELECTOR, "#form-field-select-83 .ui-select-label-content").click()
     assert element.is_displayed()
     self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)").click()

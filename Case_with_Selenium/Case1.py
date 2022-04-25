@@ -14,7 +14,7 @@ from Case_with_Selenium.Home_Page import HomePage
 class TestCase1():
     def setup_method(self, method):
         self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
-   #     self.vars = {}
+
 
     def teardown_method(self, method):
         self.driver.quit()
@@ -23,21 +23,10 @@ class TestCase1():
         self.driver.get("https://blog.griddynamics.com")
         self.driver.set_window_size(1440, 790)
         element = self.driver.find_element(By.CSS_SELECTOR, HomePage.element_name)
-        #element = self.driver.find_element(By.CSS_SELECTOR, ".section-block:nth-child(3) > .section-button")
         actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
         element = self.driver.find_element(By.CSS_SELECTOR, HomePage.element_body)
-        #element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        #actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
         element = self.driver.find_element(By.LINK_TEXT, HomePage.element_about)
-        #element = self.driver.find_element(By.LINK_TEXT, "About")
-        #actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
         self.driver.find_element(By.LINK_TEXT, HomePage.element_about).click()
-        #self.driver.find_element(By.LINK_TEXT, "About").click()
-       # selected_text = self.driver.find_element(By.XPATH,
-        #                                         '//*[contains(text(),"Grid Dynamics is a publicly-traded")]').text
 
         selected_text = self.driver.find_element(By.XPATH,
                                                  HomePage.text_selected).text
