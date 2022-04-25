@@ -26,7 +26,11 @@ class TestCase3():
     assert element.is_displayed()
     element.click()
 
-    self.driver.find_element(By.NAME, "firstName").send_keys("Anna")
+    elementFN  = self.driver.find_element(By.XPATH,"//input[contains(@formcontrolname,'firstName')]")
+
+    assert elementFN.is_displayed()
+    elementFN.send_keys("Anna")
+
     self.driver.find_element(By.NAME, "lastName").click()
     assert element.is_displayed()
     self.driver.find_element(By.NAME, "lastName").send_keys("Smith")

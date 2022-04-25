@@ -11,7 +11,7 @@ LOGGER = logging.getLogger(__name__)
 
 class TestCase2:
     def setup_method(self, method):
-        self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
+        self.driver = webdriver.Chrome("../chromedriver/chromedriver")
 
 
 
