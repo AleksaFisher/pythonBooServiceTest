@@ -30,8 +30,8 @@ class TestTestCase2Insight():
 
         self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected").click()
         self.driver.find_element(By.CSS_SELECTOR, "div > span:nth-child(6)").click()
-        self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected").click()
-        self.driver.find_element(By.CSS_SELECTOR, "#topiclist > div").click()
+        # self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected").click()
+        # self.driver.find_element(By.CSS_SELECTOR, "#topiclist > div").click()
 
         element =  self.driver.find_element(By.CSS_SELECTOR, "#topiclist .selected")
         assert element.is_displayed()
