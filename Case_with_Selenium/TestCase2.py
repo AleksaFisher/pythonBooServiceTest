@@ -41,10 +41,14 @@ class TestCase2:
         # assert element.is_displayed()
 
 
-        element.send_keys('Cloud and DevOps')
+
         # cloud devops in filter
-        element = self.driver.find_element(By.XPATH, "//span[data-value=“cloud-and-devops”]")
-        LOGGER.critical(f"List:{len(element)}")
+        element= self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected']")
+
+        self.driver.execute_script("arguments[0].innerText='Cloud and DevOps'", element)
+        # element_cloud = self.driver.find_element(By.XPATH, "//span[@data-value='cloud-and-devops']")
+        # self.driver.execute_script("arguments[0].setAttribute('class',arguments[1])", element_cloud, 'selected')
+        LOGGER.critical(f"List:{element}")
         element.click()
         assert element.is_displayed()
 
