@@ -30,20 +30,31 @@ class TestCase2:
 
 
         # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']")
-        element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
-        element.click()
-        assert element.is_displayed()
+        #element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
+        #element.click()
+        #assert element.is_displayed()
+
+        #element.send_keys('Cloud and DevOps')
+        # cloud devops in filter
+        # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
+        # element.click()
+        # assert element.is_displayed()
+
 
         element.send_keys('Cloud and DevOps')
         # cloud devops in filter
-
-
-
-        element = self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-5 > .ng-star-inserted:nth-child(1) span")
-        assert element.is_displayed()
+        element = self.driver.find_element(By.XPATH, "//span[data-value=“cloud-and-devops”]")
+        LOGGER.critical(f"List:{len(element)}")
         element.click()
+        assert element.is_displayed()
 
-        element5 = self.driver.find_elements(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
-        LOGGER.critical(f"List:{len(element5)}")
-        assert len(element5) > 0
+        # element.send_keys('Cloud and DevOps')
+
+        #element = self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-5 > .ng-star-inserted:nth-child(1) span")
+        #assert element.is_displayed()
+        #element.click()
+
+        #element5 = self.driver.find_elements(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
+        #LOGGER.critical(f"List:{len(element5)}")
+        #assert len(element5) > 0
 

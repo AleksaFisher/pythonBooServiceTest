@@ -19,8 +19,7 @@ class TestApiClass:
                 raise Exception
         except Exception as error:
             print(f"{error}")
-        # assert check is not None
-        # assert check.status_code == 200
+
 
 
 

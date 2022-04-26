@@ -13,7 +13,7 @@ from Case_with_Selenium.Home_Page import HomePage
 
 class TestCase1():
     def setup_method(self, method):
-        self.driver = webdriver.Chrome("/Users/afisher/Downloads/chrome_drivers/98/chromedriver")
+        self.driver = webdriver.Chrome("../chromedriver/chromedriver")
 
 
     def teardown_method(self, method):

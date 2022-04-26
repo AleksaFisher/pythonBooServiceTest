@@ -13,10 +13,10 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 class TestCase3():
   def setup_method(self, method):
     self.driver = webdriver.Chrome("../chromedriver/chromedriver")
-  #  self.vars = {}
+
   
   def teardown_method(self, method):
-    # self.driver.quit()
+
     pass
   
   def test_case3(self):
@@ -31,17 +31,23 @@ class TestCase3():
     assert elementFN.is_displayed()
     elementFN.send_keys("Anna")
 
-    self.driver.find_element(By.NAME, "lastName").click()
+    elementLN = self.driver.find_element(By.XPATH, "//input[contains(@formcontrolname,'lastName')]")
+
+    assert elementLN.is_displayed()
+    elementLN.send_keys("Smith")
+
+    elementmail = self.driver.find_element(By.XPATH, "//input[contains(@formcontrolname,'email')]")
+    assert elementmail.is_displayed()
+    elementmail.send_keys("annasmith@griddynamics.com")
+
+    elementPrivacy = self.driver.find_element(By.CSS_SELECTOR, "#form-field-select-83 .ui-select-label-content")
     assert element.is_displayed()
-    self.driver.find_element(By.NAME, "lastName").send_keys("Smith")
-    self.driver.find_element(By.NAME, "email").click()
+    elementPrivacy.click()
+
+    elementGd = self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)")
     assert element.is_displayed()
-    self.driver.execute_script("window.scrollTo(0,240)")
-    self.driver.find_element(By.NAME, "email").send_keys("annasmith@griddynamics.com")
-    self.driver.find_element(By.CSS_SELECTOR, "#form-field-select-83 .ui-select-label-content").click()
-    assert element.is_displayed()
-    self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)").click()
-    assert element.is_displayed()
+    elementGd.click()
+
     self.driver.find_element(By.CSS_SELECTOR, ".checkbox-control:nth-child(7) .ui-checkbox-cell").click()
     assert element.is_displayed()
     self.driver.find_element(By.CSS_SELECTOR, ".ng-invalid > .ui-checkbox > .ui-checkbox-cell").click()
@@ -52,11 +58,9 @@ class TestCase3():
     actions.move_to_element(element).click_and_hold().perform()
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
     assert element.is_displayed()
-    #actions = ActionChains(self.driver)
     actions.move_to_element(element).perform()
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
     assert element.is_displayed()
-    #actions = ActionChains(self.driver)
     actions.move_to_element(element).release().perform()
     self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block").click()
     assert element.is_displayed()
