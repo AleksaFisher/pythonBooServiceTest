@@ -27,12 +27,10 @@ class TestCase3():
     element.click()
 
     elementFN  = self.driver.find_element(By.XPATH,"//input[contains(@formcontrolname,'firstName')]")
-
     assert elementFN.is_displayed()
     elementFN.send_keys("Anna")
 
     elementLN = self.driver.find_element(By.XPATH, "//input[contains(@formcontrolname,'lastName')]")
-
     assert elementLN.is_displayed()
     elementLN.send_keys("Smith")
 
@@ -41,17 +39,21 @@ class TestCase3():
     elementmail.send_keys("annasmith@griddynamics.com")
 
     elementPrivacy = self.driver.find_element(By.CSS_SELECTOR, "#form-field-select-83 .ui-select-label-content")
-    assert element.is_displayed()
+    assert elementPrivacy.is_displayed()
     elementPrivacy.click()
 
     elementGd = self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)")
-    assert element.is_displayed()
+    assert elementGd.is_displayed()
     elementGd.click()
 
-    self.driver.find_element(By.CSS_SELECTOR, ".checkbox-control:nth-child(7) .ui-checkbox-cell").click()
-    assert element.is_displayed()
-    self.driver.find_element(By.CSS_SELECTOR, ".ng-invalid > .ui-checkbox > .ui-checkbox-cell").click()
-    assert element.is_displayed()
+    elementch = self.driver.find_element(By.CSS_SELECTOR, ".checkbox-control:nth-child(7) .ui-checkbox-cell")
+    assert elementch.is_displayed()
+    elementch.click()
+
+    elementui = self.driver.find_element(By.CSS_SELECTOR, ".ng-invalid > .ui-checkbox > .ui-checkbox-cell")
+    assert elementui.is_displayed()
+    elementui..click()
+
     self.driver.execute_script("window.scrollTo(0,213)")
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
     actions = ActionChains(self.driver)
