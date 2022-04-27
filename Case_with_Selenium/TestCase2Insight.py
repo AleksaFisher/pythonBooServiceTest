@@ -12,8 +12,7 @@ class TestTestCase2Insight():
 
 
     def teardown_method(self, method):
-
-        pass
+        self.driver.quit()
 
     def test_case2(self):
         self.driver.get("https://blog.griddynamics.com/")

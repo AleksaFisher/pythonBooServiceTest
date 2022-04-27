@@ -16,8 +16,7 @@ class TestCase2:
 
 
     def teardown_method(self, method):
-
-        pass
+        self.driver.quit()
 
     def test_case2(self):
         self.driver.get("https://blog.griddynamics.com/")
@@ -29,50 +28,29 @@ class TestCase2:
         element.click()
 
 
-        # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']")
-        #element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
-        #element.click()
-        #assert element.is_displayed()
-
-        #
-        # # cloud devops in filter
-        # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
-        # element.click()
-        # assert element.is_displayed()
-
-
 
         # cloud devops in filter
-
-
-        # filter0 = self.driver.find_elements(by=By.XPATH, "//span[data-value=“cloud-and-devops”]")
-        # self.driver.execute_script("arguments[0].click();", filter0)
-        # # self.driver.execute_script("arguments[0].click();", filter)
-        #attrs = []
-        #for attr in element.get_property('attributes'):
-         #   attrs.append([attr['name'], attr['value']])
-        #print(attrs)
-
-        # self.driver.execute_script("arguments[0].innerText='Cloud and DevOps'", element)
 
         element_cloud = self.driver.find_element(By.XPATH, "//span[@data-value='cloud-and-devops']")
         self.driver.execute_script("arguments[0].click();", element_cloud)
 
         element_cloud_count = self.driver.find_elements(By.XPATH,
-                    "//section[contains(@class,'cloud-and-devops')]//div[@class=container]//div[contains(@class,'row')]//a[contains(@class,'card')]")
+                    "//section[contains(@class,'cloud-and-devops') and contains(@style,'')]//div[@class='container']//div[contains(@class,'row')]//a[contains(@class,'cardtocheck')]")
         LOGGER.critical(f"List:{len(element_cloud_count)}")
-        # self.driver.execute_script("arguments[0].setAttribute('class',arguments[1])", element_cloud, 'selected')
-        #LOGGER.critical(f"List:{element}")
-        #element.click()
-        #assert element.is_displayed()
+        cloud_postid0 = element_cloud_count[0].get_attribute('data-postid')
+        LOGGER.critical(f"Cloud post id0:{cloud_postid0}")
+        assert len(element_cloud_count) > 1
 
-        # element.send_keys('Cloud and DevOps')
+        # reset filter
+        element_all = self.driver.find_element(By.XPATH, "//span[@data-value='all']")
+        self.driver.execute_script("arguments[0].click();", element_all)
 
-        #element = self.driver.find_element(By.CSS_SELECTOR, ".ng-tns-c66-5 > .ng-star-inserted:nth-child(1) span")
-        #assert element.is_displayed()
-        #element.click()
+        element_all_count = self.driver.find_elements(By.XPATH,
+                    "//section[contains(@class,'all') and contains(@style,'')]//div[@class='container']//div[contains(@class,'row')]//a[contains(@class,'cardtocheck')]")
+        LOGGER.critical(f"List all:{len(element_all_count)}")
 
-        #element5 = self.driver.find_elements(By.XPATH, "//A[@_ngcontent-gd-website-c71='']")
-        #LOGGER.critical(f"List:{len(element5)}")
-        #assert len(element5) > 0
+        assert len(element_all_count) > 1
+        all_postid0 = element_all_count[0].get_attribute('data-postid')
+        LOGGER.critical(f"Cloud post id0:{all_postid0}")
 
+        assert cloud_postid0 != all_postid0
