@@ -21,16 +21,10 @@ class TestCase2:
     def test_case2(self):
         self.driver.get("https://blog.griddynamics.com/")
         self.driver.set_window_size(1440, 790)
-
-
         element = self.driver.find_element(By.LINK_TEXT, "Insights")
         assert element.is_displayed()
         element.click()
-
-
-
         # cloud devops in filter
-
         element_cloud = self.driver.find_element(By.XPATH, "//span[@data-value='cloud-and-devops']")
         self.driver.execute_script("arguments[0].click();", element_cloud)
 

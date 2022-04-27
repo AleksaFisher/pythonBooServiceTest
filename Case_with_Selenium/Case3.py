@@ -45,7 +45,12 @@ class TestCase3():
     assert elementPrivacy.is_displayed()
     assert elementPrivacy.get_attribute('class') == 'ui-checkbox-cell ui-checkbox-cell-checked'
 
+    elementAllow = self.driver.find_element(By.XPATH,
+                                              "//gd-checkbox[contains(@formcontrolname,'allowContact')]//label[@class='ui-checkbox']//div[contains(@class,'ui-checkbox-cell')]")
 
+    self.driver.execute_script("arguments[0].click();", elementAllow)
+    assert elementAllow.is_displayed()
+    assert elementAllow.get_attribute('class') == 'ui-checkbox-cell ui-checkbox-cell-checked'
 
     elementSubmitButton = self.driver.find_element(By.XPATH,"//button[contains(@type,'submit') and contains(@class,'submit-button')]")
     assert elementSubmitButton.is_displayed()
@@ -55,27 +60,4 @@ class TestCase3():
 
 
 
-    elementGd = self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)")
-    assert elementGd.is_displayed()
-    elementGd.click()
 
-    elementch = self.driver.find_element(By.CSS_SELECTOR, ".checkbox-control:nth-child(7) .ui-checkbox-cell")
-    assert elementch.is_displayed()
-    elementch.click()
-
-    elementui = self.driver.find_element(By.CSS_SELECTOR, ".ng-invalid > .ui-checkbox > .ui-checkbox-cell")
-    assert elementui.is_displayed()
-    elementui.click()
-
-    self.driver.execute_script("window.scrollTo(0,213)")
-    element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).click_and_hold().perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
-    assert element.is_displayed()
-    actions.move_to_element(element).perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
-    assert element.is_displayed()
-    actions.move_to_element(element).release().perform()
-    self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block").click()
-    assert element.is_displayed()
