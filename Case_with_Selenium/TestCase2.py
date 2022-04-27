@@ -34,8 +34,8 @@ class TestCase2:
         #element.click()
         #assert element.is_displayed()
 
-        #element.send_keys('Cloud and DevOps')
-        # cloud devops in filter
+        #
+        # # cloud devops in filter
         # element = self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected'][normalize-space()='All topics']")
         # element.click()
         # assert element.is_displayed()
@@ -43,19 +43,28 @@ class TestCase2:
 
 
         # cloud devops in filter
-        element= self.driver.find_element(By.XPATH, "//div[@id='topiclist']//div//span[@class='selected']")
 
-        attrs = []
-        for attr in element.get_property('attributes'):
-            attrs.append([attr['name'], attr['value']])
-        print(attrs)
+
+        # filter0 = self.driver.find_elements(by=By.XPATH, "//span[data-value=“cloud-and-devops”]")
+        # self.driver.execute_script("arguments[0].click();", filter0)
+        # # self.driver.execute_script("arguments[0].click();", filter)
+        #attrs = []
+        #for attr in element.get_property('attributes'):
+         #   attrs.append([attr['name'], attr['value']])
+        #print(attrs)
 
         # self.driver.execute_script("arguments[0].innerText='Cloud and DevOps'", element)
-        # element_cloud = self.driver.find_element(By.XPATH, "//span[@data-value='cloud-and-devops']")
+
+        element_cloud = self.driver.find_element(By.XPATH, "//span[@data-value='cloud-and-devops']")
+        self.driver.execute_script("arguments[0].click();", element_cloud)
+
+        element_cloud_count = self.driver.find_elements(By.XPATH,
+                    "//section[contains(@class,'cloud-and-devops')]//div[@class=container]//div[contains(@class,'row')]//a[contains(@class,'card')]")
+        LOGGER.critical(f"List:{len(element_cloud_count)}")
         # self.driver.execute_script("arguments[0].setAttribute('class',arguments[1])", element_cloud, 'selected')
-        LOGGER.critical(f"List:{element}")
-        element.click()
-        assert element.is_displayed()
+        #LOGGER.critical(f"List:{element}")
+        #element.click()
+        #assert element.is_displayed()
 
         # element.send_keys('Cloud and DevOps')
 

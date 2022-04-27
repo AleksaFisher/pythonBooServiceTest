@@ -52,7 +52,7 @@ class TestCase3():
 
     elementui = self.driver.find_element(By.CSS_SELECTOR, ".ng-invalid > .ui-checkbox > .ui-checkbox-cell")
     assert elementui.is_displayed()
-    elementui..click()
+    elementui.click()
 
     self.driver.execute_script("window.scrollTo(0,213)")
     element = self.driver.find_element(By.CSS_SELECTOR, ".submit-button > .ui-button-block")
