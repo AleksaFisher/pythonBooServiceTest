@@ -38,9 +38,22 @@ class TestCase3():
     assert elementmail.is_displayed()
     elementmail.send_keys("annasmith@griddynamics.com")
 
-    elementPrivacy = self.driver.find_element(By.CSS_SELECTOR, "#form-field-select-83 .ui-select-label-content")
+    elementPrivacy = self.driver.find_element(By.XPATH,
+    "//gd-checkbox[contains(@formcontrolname,'policy')]//label[@class='ui-checkbox']//div[contains(@class,'ui-checkbox-cell')]")
+
+    self.driver.execute_script("arguments[0].click();", elementPrivacy)
     assert elementPrivacy.is_displayed()
-    elementPrivacy.click()
+    assert elementPrivacy.get_attribute('class') == 'ui-checkbox-cell ui-checkbox-cell-checked'
+
+
+
+    elementSubmitButton = self.driver.find_element(By.XPATH,"//button[contains(@type,'submit') and contains(@class,'submit-button')]")
+    assert elementSubmitButton.is_displayed()
+    assert elementSubmitButton.get_attribute('disabled') == 'true'
+
+
+
+
 
     elementGd = self.driver.find_element(By.CSS_SELECTOR, ".ui-select-option:nth-child(4)")
     assert elementGd.is_displayed()
