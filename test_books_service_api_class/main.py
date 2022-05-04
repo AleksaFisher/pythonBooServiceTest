@@ -2,6 +2,7 @@ import datetime
 import time
 import pytest
 from test_books_service_api_class import ApiClass
+#from api_classes import ApiClass
 # from Case_with_Selenium import TestCase1
 
 
@@ -29,6 +30,7 @@ class TestApiClass:
         data = {"type": "Science", "title": "#{}-Discoveries in the field of physics".format(time.time()),
                 "creation_date": date_add}
         result = book_object.add_book(data)
+        print("{}\n{}".format(result.status_code, result.json()))
         assert result.status_code == 200
 
     def t_add_book_characters_name(self):
@@ -55,7 +57,7 @@ class TestApiClass:
         assert result.status_code == 200
 
     def t_delete_book(self):
-        book_id = "d87f4b4a-908d-48e7-bc0d-7da2850d3f1a"
+        book_id = "5ed9af77-1840-4a1f-b811-c5fd20549821"
         book_object = ApiClass(self.url)
         result = book_object.delete_book(book_id)
         assert result.status_code == 200
@@ -68,7 +70,7 @@ class TestApiClass:
 
     def t_get_info_book_with_id(self):
         book_object = ApiClass(self.url)
-        dict_params = "6bfc01c4-7100-4a06-b02b-7305a3f44949"
+        dict_params = "5ed9af77-1840-4a1f-b811-c5fd20549821"
         result = book_object.get_book_info_by_id(dict_params)
         assert result.status_code == 200
 
@@ -79,7 +81,7 @@ class TestApiClass:
         assert result.status_code == 200
 
     def t_rename_book(self,setup):
-        book_id = "6bfc01c4-7100-4a06-b02b-7305a3f44949"
+        book_id = "5ed9af77-1840-4a1f-b811-c5fd20549821"
         rename_data = {'id': book_id, 'changes': {'id': book_id, 'type': 'Drama'}}
         book_object = ApiClass(self.url)
         result = book_object.rename_book(rename_data)
@@ -90,6 +92,7 @@ class TestApiClass:
 
 def test_books_service():
     b = TestApiClass("http://127.0.0.1:5000/v1/books")
+    b.t_add_book()
     b.t_get_info_book_with_id()
 
 
