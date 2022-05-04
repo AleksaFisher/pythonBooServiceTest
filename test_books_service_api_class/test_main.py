@@ -60,10 +60,17 @@ class TestApiClass:
 
         assert result.status_code == 200
 
-    def test_add_empty_book(self):
+    def test_add_empty_namebook(self):
         book_object = ApiClass(self.url)
         date_add = datetime.date.today().strftime("%Y-%m-%d")
-        data = {"type": "", "title": "", "creation_date": date_add}
+        data = {"type": "Drama", "title": "", "creation_date": date_add}
+        result = book_object.add_book(data)
+        assert result.status_code == 200
+
+    def test_add_empty_typebook(self):
+        book_object = ApiClass(self.url)
+        date_add = datetime.date.today().strftime("%Y-%m-%d")
+        data = {"type": "", "title": "Fantastic", "creation_date": date_add}
         result = book_object.add_book(data)
         assert result.status_code == 200
 
