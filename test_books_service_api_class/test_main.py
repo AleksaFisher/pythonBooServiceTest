@@ -20,17 +20,6 @@ class TestApiClass:
                 raise Exception
         except Exception as error:
             print(f"{error}")
-  #  def __init__(self, url):
-   #     self.url = url
-
-
-    #def setup_method(self, method):
-     #   try:
-      #      check = ApiClass(self.url).check_connection()
-       #     if not check.status_code == 200:
-        #        raise Exception
-        #except Exception as error:
-         #   print(f"{error}")
 
 
 
@@ -88,7 +77,7 @@ class TestApiClass:
 
     def test_get_info_book_with_id(self):
         book_object = ApiClass(self.url)
-        dict_params = "e76f2876-a277-485b-9e2d-497eaaacafb8"
+        dict_params = "1e0a7ac8-257e-441a-99e0-193aa51382e9"
         result = book_object.get_book_info_by_id(dict_params)
         assert result.status_code == 200
 
@@ -99,7 +88,7 @@ class TestApiClass:
         assert result.status_code == 200
 
     def test_rename_book(self):
-        book_id = "e76f2876-a277-485b-9e2d-497eaaacafb8"
+        book_id = "1e0a7ac8-257e-441a-99e0-193aa51382e9"
         rename_data = {'id': book_id, 'changes': {'id': book_id, 'type': 'Drama'}}
         book_object = ApiClass(self.url)
         result = book_object.rename_book(rename_data)

@@ -1,1 +1,1 @@
-from .Case1 import TestCase1
+from .test_Case1 import TestCase1
