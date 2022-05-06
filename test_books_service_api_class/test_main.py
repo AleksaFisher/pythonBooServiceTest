@@ -1,19 +1,15 @@
 import datetime
 import time
 import pytest
-#from test_books_service_api_class import ApiClass
+
 from test_books_service_api_class import api_classes
 from api_classes import ApiClass
-#import ApiClass
-# from Case_with_Selenium import TestCase1
-#url="http://127.0.0.1:5000/v1/books"
-
 
 
 class TestApiClass:
     url = "http://127.0.0.1:5000/v1/books"
-    @pytest.fixture(scope='function')
-    def setup_method(self, method):
+    @pytest.fixture(scope="function")
+    def setup_method(self):
         try:
             check = ApiClass(self.url).check_connection()
             if not check.status_code == 200:
@@ -36,7 +32,7 @@ class TestApiClass:
     def test_add_book_characters_name(self):
         book_object = ApiClass(self.url)
         date_add = datetime.date.today().strftime("%Y-%m-%d")
-        dt_add_book = {"title": "\.,"}
+        dt_add_book = {"title": "\.,", "type": "Drama"}
         result = book_object.add_book(dt_add_book)
 
         assert result.status_code == 200
@@ -44,10 +40,10 @@ class TestApiClass:
     def test_add_book_characters_type(self):
         book_object = ApiClass(self.url)
         date_add = datetime.date.today().strftime("%Y-%m-%d")
-        dt_add_book = {"type": "\.,"}
+        dt_add_book = {"type": "\.,", "title": "Drama"}
         result = book_object.add_book(dt_add_book)
 
-        assert result.status_code == 200
+        assert result.status_code == 400
 
     def test_add_empty_namebook(self):
         book_object = ApiClass(self.url)
@@ -61,7 +57,7 @@ class TestApiClass:
         date_add = datetime.date.today().strftime("%Y-%m-%d")
         data = {"type": "", "title": "Fantastic", "creation_date": date_add}
         result = book_object.add_book(data)
-        assert result.status_code == 200
+        assert result.status_code == 400
 
    # def test_delete_book(self):
     #    book_id = "6c311eaa-3166-4bb7-aa7a-55c9b2df736b"
@@ -77,7 +73,7 @@ class TestApiClass:
 
     def test_get_info_book_with_id(self):
         book_object = ApiClass(self.url)
-        dict_params = "1e0a7ac8-257e-441a-99e0-193aa51382e9"
+        dict_params = "ce347686-e531-4224-8a02-ab236c7babc6"
         result = book_object.get_book_info_by_id(dict_params)
         assert result.status_code == 200
 
@@ -88,7 +84,7 @@ class TestApiClass:
         assert result.status_code == 200
 
     def test_rename_book(self):
-        book_id = "1e0a7ac8-257e-441a-99e0-193aa51382e9"
+        book_id = "ce347686-e531-4224-8a02-ab236c7babc6"
         rename_data = {'id': book_id, 'changes': {'id': book_id, 'type': 'Drama'}}
         book_object = ApiClass(self.url)
         result = book_object.rename_book(rename_data)
